@@ -1,0 +1,352 @@
+@import '../../styles/_mixin.scss';
+
+.mainWrapper {
+  font-family: 'poppins';
+  height: 100%;
+  display: flex;
+  padding: 32px;
+  gap: 20px;
+  flex-direction: column;
+  overflow: scroll;
+  h1 {
+    line-height: 40px;
+  }
+}
+
+.btnDiv {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  button {
+    height: 40px;
+  }
+}
+
+.firstSection {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
+
+  input {
+    height: 40px !important;
+    border-radius: 8px !important;
+    border: 1px solid #c3d3e2 !important;
+    color: #444a6d !important;
+    margin-top: 5px !important;
+  }
+  .settingsCard {
+    padding: 23px;
+    height: 100%;
+    width: 65%;
+    gap: 15px;
+    height: 100%;
+    @media (max-width: 1000px) {
+      width: 100%;
+    }
+
+    .profileWrapper {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 60px;
+      @media (max-width: 650px) {
+        flex-direction: column;
+      }
+      .detailsDiv {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        @media (max-width: 800px) {
+          width: 70%;
+        }
+        @media (max-width: 650px) {
+          width: 100%;
+        }
+        .profilePicture {
+          display: flex;
+          align-items: flex-start;
+          gap: 9px;
+          flex-direction: column;
+          span {
+            font-family: Poppins;
+            @include fontB3;
+            font-weight: 600;
+            line-height: 21.79px;
+            color: #05004e;
+          }
+          .profileImg {
+            cursor: pointer;
+            height: 128px;
+            width: 128px;
+            border-radius: 50%;
+            object-fit: contain;
+          }
+        }
+        .profileBtns {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 7px;
+          .btnFlex {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            button {
+              height: 40px;
+            }
+          }
+          p {
+            font-family: Poppins;
+            @include fontB3;
+            font-weight: 400;
+            line-height: 16.12px;
+            text-align: left;
+            color: #444a6d;
+          }
+        }
+      }
+      .textDiv {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        @media (max-width: 800px) {
+          width: 30%;
+        }
+        @media (max-width: 650px) {
+          width: 100%;
+        }
+        .inputClass {
+          max-width: 344px;
+          @media (max-width: 1000px) {
+            width: 100%;
+          }
+          label {
+            font-family: Poppins;
+            @include fontB3;
+            font-weight: 600;
+            line-height: 21.79px;
+            color: #05004e;
+          }
+        }
+      }
+    }
+  }
+  .passwordCard {
+    padding: 23px;
+    height: 100%;
+    width: 35%;
+    gap: 15px;
+    @media (max-width: 1000px) {
+      width: 100%;
+    }
+    .inputClass {
+      max-width: 366px;
+      label {
+        font-family: Poppins;
+        @include fontB3;
+        font-weight: 600;
+        line-height: 21.79px;
+        color: #05004e;
+      }
+    }
+  }
+}
+
+.secondSection {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  @media (max-width: 650px) {
+    flex-direction: column;
+  }
+  span {
+    font-family: Poppins;
+    @include fontH7;
+    font-weight: 500;
+    line-height: 26.18px;
+    text-align: left;
+    color: #444a6d;
+  }
+  .idCard {
+    padding: 23px;
+    width: 65%;
+    gap: 0px;
+    height: 100%;
+    @media (max-width: 768px) {
+      width: 50%;
+    }
+    @media (max-width: 650px) {
+      width: 100%;
+    }
+  }
+  .accountCard {
+    padding: 23px;
+    width: 35%;
+    height: 100%;
+    gap: 0px;
+    @media (max-width: 768px) {
+      width: 50%;
+    }
+    @media (max-width: 650px) {
+      width: 100%;
+    }
+  }
+}
+
+.thirdSection {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
+  .subscriptionCard {
+    padding: 23px;
+    width: 65%;
+    gap: 5px;
+    @media (max-width: 800px) {
+      width: 100%;
+    }
+    .subsFlex {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+      @media (max-width: 650px) {
+        flex-direction: column;
+      }
+      p {
+        font-family: Poppins;
+        @include fontB2;
+        font-weight: 600;
+        line-height: 26.74px;
+        text-align: left;
+        color: #05004e;
+      }
+      .date {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        @media (max-width: 650px) {
+          width: 100%;
+        }
+        .validity {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 70px;
+          padding: 20px;
+          border-radius: 13.01px;
+          border: 1.63px solid #c3d3e2;
+          span {
+            font-family: Poppins;
+            @include fontB1;
+            font-weight: 600;
+            line-height: 31.15px;
+            text-align: left;
+            color: #444a6d;
+          }
+        }
+      }
+      .paymentCards {
+        width: 60%;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        @media (max-width: 650px) {
+          width: 100%;
+        }
+        .addDiv {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .addNew {
+            cursor: pointer;
+            font-family: Poppins;
+            @include fontB2;
+            font-weight: 400;
+            line-height: 26.4px;
+            letter-spacing: 0.005em;
+            text-align: left;
+            color: #4b7df3;
+          }
+        }
+        .cards {
+          width: 100%;
+          gap: 28px;
+          display: flex;
+          flex-wrap: wrap;
+          .cardInfo {
+            position: relative;
+            transition: all 0.5s ease;
+            &:hover {
+              scale: 103%;
+            }
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            gap: 16px;
+            height: 70px;
+            padding: 10px;
+            border-radius: 12px;
+            border: 1.47px solid #cdd5e0;
+            .innerLeft {
+              .dot {
+                margin-top: -20px;
+                height: 16px;
+                width: 16px;
+                border: 2px solid #cdd5e0;
+                border-radius: 50%;
+              }
+            }
+            .innerRight {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              span {
+                font-family: Poppins;
+                @include fontB2;
+                font-weight: 500;
+                line-height: 26.4px;
+                letter-spacing: 0.005em;
+                text-align: left;
+                color: #111729;
+              }
+              p {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                font-family: Poppins;
+                @include fontB2;
+                font-weight: 400;
+                letter-spacing: 0.005em;
+                text-align: left;
+                color: #677489;
+              }
+            }
+          }
+          .cardSelected {
+            border: 1.47px solid #4b7df3;
+            .innerLeft {
+              .dot {
+                border: 2px solid #4b7df3;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .gapEmpty {
+    width: 35%;
+    @media (max-width: 800px) {
+      display: none;
+    }
+  }
+}

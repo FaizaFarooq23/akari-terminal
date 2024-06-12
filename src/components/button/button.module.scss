@@ -1,0 +1,44 @@
+@import 'styles/_mixin.scss';
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: max-content;
+  height: 58px;
+  width: 100%;
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #c3d3e2;
+  padding: 10px;
+  &:active {
+    border-color: #4b7df3;
+  }
+  &:disabled {
+    span {
+      color: red !important;
+    }
+  }
+
+  .img {
+    margin-right: 10px;
+    width: 12px;
+    height: 13px;
+  }
+
+  svg {
+    margin-right: 10px;
+    width: 12px;
+    height: 13px;
+  }
+
+  .btnTitle {
+    color: #444a6d;
+    font-family: Poppins;
+    @include fontB2;
+    font-weight: 600;
+    line-height: 32.03px;
+    text-align: center;
+  }
+}

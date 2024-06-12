@@ -1,0 +1,277 @@
+@import '../../styles/_mixin.scss';
+
+.mainLayout {
+  background-color: #fafbfc;
+  height: 100vh;
+  width: 100%;
+
+  .childDiv {
+    height: calc(100vh - 120px);
+    width: calc(100vw - 345px);
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+    @media (max-width: 1440px) {
+      width: 100vw;
+    }
+    @media (max-width: 768px) {
+      height: 100%;
+      position: relative;
+      margin-top: 90px;
+      overflow: auto;
+    }
+  }
+}
+
+.topHeader {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: calc(100vw - 345px);
+  height: 120px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 66px 30px 40px;
+  z-index: 2;
+  @media (max-width: 1440px) {
+    width: 100vw;
+  }
+  @media (max-width: 768px) {
+    height: 90px;
+    padding: 40px;
+  }
+
+  .hamBurger {
+    position: relative;
+    display: none;
+    @media (max-width: 1440px) {
+      display: block;
+    }
+    img {
+      cursor: pointer;
+    }
+  }
+  .navMenu {
+    position: absolute;
+    background-color: #fff;
+    padding: 30px;
+    width: 300px;
+    height: 600px;
+    border-radius: 0px 0px 37px 0px;
+    z-index: 2;
+    top: 70px;
+    left: -40px;
+    max-height: 0px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+    @media (max-width: 1440px) {
+      top: 55px;
+    }
+
+    @media (max-width: 500px) {
+      width: 100vw;
+      align-items: center;
+
+      border-radius: 37px;
+      box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.75);
+      -webkit-box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.75);
+      padding: 30px 0px;
+      height: fit-content;
+    }
+
+    box-shadow: 3px 6px 11px -8px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 3px 6px 11px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 6px 11px -8px rgba(0, 0, 0, 0.75);
+
+    .crossDiv {
+      @media (max-width: 500px) {
+        display: flex;
+      }
+      display: none;
+      padding-left: 24px;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .page {
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      justify-content: flex-start;
+      padding: 8px 12px 8px 12px;
+      border-radius: 16px;
+      transition: all 0.5s ease;
+      @media (max-width: 500px) {
+        justify-content: flex-start;
+        width: 50%;
+      }
+      &:hover {
+        scale: 103%;
+        background: linear-gradient(90deg, #bc417236 0%, #30397536 100%);
+      }
+      span {
+        font-family: Poppins;
+        @include fontB2;
+        font-weight: 400;
+        line-height: 27px;
+        text-align: left;
+        color: #737791;
+      }
+    }
+    .active {
+      width: fit-content;
+      @media (max-width: 500px) {
+        justify-content: flex-start;
+        width: 50%;
+      }
+      img {
+        filter: brightness(2.5);
+      }
+      &:hover {
+        scale: 100% !important;
+        background: linear-gradient(90deg, #bc4172 0%, #303975 100%) !important;
+      }
+      span {
+        color: #fff;
+        font-weight: 600;
+      }
+      background: linear-gradient(90deg, #bc4172 0%, #303975 100%);
+    }
+    .iconDiv {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+  .navMenuShow {
+    opacity: 1;
+    visibility: visible;
+    max-height: 600px;
+  }
+  .title {
+    @media (max-width: 768px) {
+      display: none;
+    }
+    h1 {
+      font-family: Poppins;
+      @include fontH2;
+      line-height: 50.4px;
+      text-align: left;
+    }
+  }
+  .search {
+    max-width: 513px;
+    flex: 1;
+    border-radius: 16px;
+    background: #f9fafb;
+    height: 60px;
+    padding: 2px 2px 2px 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    @media (max-width: 1440px) {
+      max-width: 350px;
+    }
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    input {
+      padding: 10px;
+      width: 90%;
+      max-height: 60px;
+      height: 60px;
+      gap: 8px;
+      background: transparent;
+      border: none;
+
+      font-family: Poppins;
+      @include fontH6;
+      font-weight: 400;
+      line-height: 27px;
+      text-align: left;
+    }
+  }
+  .topRight {
+    @media (max-width: 768px) {
+      display: none;
+    }
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    .notificationBadge {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background-color: #fafbfc;
+      .dot {
+        top: 6px;
+        right: 6px;
+        position: absolute;
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        background: linear-gradient(90deg, #bc4172 0%, #303975 100%);
+      }
+    }
+    .accountDiv {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      span {
+        // min-width: fit-content;
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-family: Poppins;
+        @include fontH7;
+        font-weight: 500;
+        line-height: 24px;
+        text-align: left;
+      }
+    }
+  }
+  .akiraTab {
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
+      height: 25px;
+      width: 120px;
+    }
+  }
+}
+.sideBar {
+  @media (max-width: 1440px) {
+    display: none;
+  }
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.backdropDiv {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  z-index: 1;
+}

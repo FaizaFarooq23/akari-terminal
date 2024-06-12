@@ -1,0 +1,29 @@
+@import '../../styles/_mixin.scss';
+
+.mainWrapper {
+  font-family: 'poppins';
+  height: 100%;
+  padding: 32px;
+}
+
+.cardClass {
+  height: 348px;
+  max-width: 920px;
+  .textDiv {
+    p {
+      font-family: Poppins;
+      @include fontB2;
+      font-weight: 400;
+      color: #444a6d;
+    }
+  }
+  .btnDiv {
+    display: flex;
+    align-items: center;
+    margin-top: 44px;
+    gap: 40px;
+    button {
+      max-width: 142px !important;
+    }
+  }
+}

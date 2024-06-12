@@ -1,0 +1,58 @@
+@import '../../styles/_mixin.scss';
+
+.mainWrapper {
+  font-family: 'poppins';
+  height: 100%;
+  padding: 32px;
+
+  .cardClass {
+    height: 348px;
+    .firstRow {
+      display: flex;
+      align-items: end;
+      gap: 12px;
+    }
+    .inputClass {
+      max-width: 180px;
+      svg {
+        top: 12px !important;
+      }
+      label {
+        font-family: Poppins;
+        @include fontB3;
+        font-weight: 600;
+        line-height: 21.79px;
+        color: #05004e;
+      }
+    }
+    .inputClass2 {
+      max-width: 344px;
+      label {
+        font-family: Poppins;
+        @include fontB3;
+        font-weight: 600;
+        line-height: 21.79px;
+        color: #05004e;
+      }
+    }
+    .selectBox {
+      input {
+        max-width: 153px !important;
+      }
+      label {
+        font-family: Poppins;
+        @include fontB3;
+        font-weight: 600;
+        line-height: 21.79px;
+        color: #05004e;
+      }
+    }
+    input {
+      height: 40px !important;
+      border-radius: 8px !important;
+      border: 1px solid #c3d3e2 !important;
+      color: #444a6d;
+      margin-top: 5px !important;
+    }
+  }
+}

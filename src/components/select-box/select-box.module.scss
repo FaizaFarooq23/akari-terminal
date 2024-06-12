@@ -1,0 +1,86 @@
+@import '../../styles/_mixin.scss';
+
+.selectBox {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  .selectBoxInput {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #c3d3e2;
+    border-radius: 5px;
+    font-family: Poppins;
+    @include fontB3;
+    font-weight: 600;
+    line-height: 21.79px;
+    text-align: left;
+    color: #444a6d;
+
+    &::placeholder {
+      @include fontB3;
+      color: gray;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+  .arrow {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+  }
+
+  .selectBoxOptions {
+    z-index: 100;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    overflow-y: auto;
+    border: 1px solid #c3d3e2;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: max-height 0.3s ease-out;
+    visibility: hidden;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: transparent;
+    }
+
+    &.show {
+      max-height: 120px;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    li {
+      padding: 10px;
+      cursor: pointer;
+      font-family: Poppins;
+      @include fontB3;
+      font-weight: 600;
+      line-height: 21.79px;
+      text-align: left;
+      color: #444a6d;
+
+      &:hover {
+        background-color: #c3d3e253;
+      }
+    }
+  }
+}
+
+.backdropDiv {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  z-index: 2;
+}

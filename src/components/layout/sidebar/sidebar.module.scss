@@ -1,0 +1,106 @@
+@import '../../../styles/_mixin.scss';
+
+.main {
+  background-color: #fff;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 60px 40px 30px 40px;
+  gap: 42px;
+}
+
+.sidebarDiv {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.routes {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+  .page {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    justify-content: flex-start;
+    padding: 16px 24px 16px 24px;
+    border-radius: 16px;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      scale: 105%;
+      background: linear-gradient(90deg, #bc417236 0%, #30397536 100%);
+    }
+    span {
+      font-family: Poppins;
+      @include fontH7;
+      font-weight: 400;
+      line-height: 27px;
+      text-align: left;
+      color: #737791;
+    }
+  }
+  .active {
+    // width: fit-content;
+    img {
+      filter: brightness(2.5);
+    }
+    &:hover {
+      scale: 100% !important;
+      background: linear-gradient(90deg, #bc4172 0%, #303975 100%) !important;
+    }
+    span {
+      color: #fff;
+      font-weight: 600;
+    }
+    background: linear-gradient(90deg, #bc4172 0%, #303975 100%);
+  }
+}
+
+.clock {
+  width: 238px;
+  height: 120px;
+  border-radius: 20px;
+  background-image: url(../../../../assets/icons/app-icon/sidebar-icons/image.png);
+  background-size: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  img {
+    cursor: pointer;
+  }
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  padding: 3px 30px;
+  width: fit-content;
+  justify-content: center;
+  height: 37px;
+  border-radius: 20px;
+  background-color: #fff;
+  min-width: 190px;
+  //text
+  font-family: Poppins;
+  @include fontH5;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+}

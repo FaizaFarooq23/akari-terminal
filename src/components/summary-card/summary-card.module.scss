@@ -1,0 +1,53 @@
+@import '../../styles/mixin';
+
+.mainWrapper {
+  width: 209px;
+  max-height: 209px;
+  gap: 0px;
+  border-radius: 16px;
+  background-color: grey;
+  padding: 25px 20px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 15px;
+  @media (max-width: 1024px) {
+    width: 120px;
+    padding: 15px;
+    gap: 10px;
+    img {
+      height: 30px;
+      width: 30px;
+    }
+  }
+  @media (max-width: 768px) {
+    width: fit-content;
+  }
+  @media (max-width: 440px) {
+    width: 100%;
+  }
+  h2 {
+    font-family: Poppins;
+    @include fontH3;
+    font-weight: 600;
+    line-height: 32px;
+    text-align: left;
+    color: #151d48;
+  }
+  span {
+    font-family: Poppins;
+    @include fontB2;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+    color: #425166;
+  }
+  p {
+    font-family: Poppins;
+    @include fontB3;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: left;
+    color: #464e5f;
+  }
+}

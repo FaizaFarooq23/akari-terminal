@@ -1,0 +1,144 @@
+@import '../../styles/mixin';
+.mainWrapper {
+  font-family: 'poppins';
+  height: 100%;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.uppderSection {
+  width: 100%;
+  display: flex;
+  gap: 22px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+  .summaryCard {
+    position: relative;
+    gap: 0px;
+    width: 70%;
+    @media (max-width: 1024px) {
+      padding: 15px;
+      width: 50%;
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+    .btnsDiv {
+      top: 32px;
+      right: 18px;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      div {
+        width: 98.06px;
+        height: 39.23px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 7.85px;
+        border: 0.98px solid #c3d3e2;
+        cursor: pointer;
+
+        //text
+        font-family: Poppins;
+        @include fontB2;
+        font-weight: 500;
+        line-height: 19.61px;
+        text-align: left;
+        color: #0f3659;
+      }
+    }
+    .subHeading {
+      font-family: Poppins;
+      @include fontB2;
+      font-weight: 400;
+      line-height: 30px;
+      text-align: left;
+      color: #737791;
+    }
+    .cardsDiv {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      @media (max-width: 1024px) {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      @media (max-width: 768px) {
+        justify-content: space-evenly;
+      }
+    }
+  }
+  .analyticsCard {
+    width: 30%;
+    @media (max-width: 1024px) {
+      padding: 15px;
+      width: 50%;
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+}
+.tableCardClass {
+  position: relative;
+  max-height: calc(100vh - 172px);
+  height: fit-content;
+  overflow: auto;
+  @media (max-width: 768px) {
+    max-height: max-content;
+    overflow: visible;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  .btnsDiv {
+    top: 45px;
+    right: 45px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    div {
+      width: 98.06px;
+      height: 39.23px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 7.85px;
+      border: 0.98px solid lightgrey;
+      cursor: pointer;
+
+      //text
+      font-family: Poppins;
+      @include fontB2;
+      font-weight: 500;
+      line-height: 19.61px;
+      text-align: left;
+      color: lightgrey;
+
+      &.selected {
+        border-color: #c3d3e2;
+        color: #0f3659;
+      }
+    }
+  }
+}

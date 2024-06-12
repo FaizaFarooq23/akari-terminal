@@ -1,0 +1,116 @@
+@import '../../styles/_mixin.scss';
+
+.mainWrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #010313;
+  .content {
+    margin: auto;
+
+    .logoDiv {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 8px;
+      span {
+        font-family: Poppins;
+        @include fontH5;
+        color: #fff;
+        font-weight: 500;
+        line-height: 30px;
+        text-align: left;
+        margin-top: -8px;
+      }
+    }
+    .formDiv {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 520px;
+      gap: 12px;
+      @media (max-width: 550px) {
+        min-width: 100%;
+      }
+      button {
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 48px;
+        gap: 8px;
+        border-radius: 12px;
+        transition: 0.5s ease-in-out;
+        background: linear-gradient(90deg, #bc4172 0%, #303975 100%);
+        &:hover {
+          scale: 102%;
+        }
+        //Text
+        font-family: Poppins;
+        @include fontB1;
+        color: #fff;
+        font-weight: 400;
+        line-height: 27px;
+        text-align: left;
+      }
+    }
+    .forgotPw {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      span {
+        cursor: pointer;
+        font-family: Poppins;
+        @include fontB1;
+        color: #fff;
+        font-weight: 400;
+      }
+    }
+    .backToLogin {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        cursor: pointer;
+        font-family: Poppins;
+        @include fontB1;
+        color: #5c73db;
+        font-weight: 400;
+      }
+    }
+    .termsDiv {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+
+      span {
+        font-family: Poppins;
+        @include fontB1;
+        color: #fff;
+        font-weight: 400;
+      }
+    }
+    .alreadyDiv {
+      margin-top: 16px;
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      justify-content: center;
+      span {
+        font-family: Poppins;
+        @include fontB1;
+        color: #fff;
+        font-weight: 400;
+      }
+    }
+  }
+}
