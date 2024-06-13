@@ -1,19 +1,65 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/no-array-index-key */
 import React, { ReactNode, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import { FiPlusCircle } from 'react-icons/fi';
 import { RiDeleteBin6Line } from 'react-icons/ri';
+import { setTimeout } from 'timers/promises';
 import arrowDown from '../../../assets/icons/app-icon/arrow-head-down.svg';
 import style from './table.module.scss';
 import Switch from '../switch';
 import AddTicket from '../../pages/modal/addTicket';
 
-const ExpandableTable = ({ rows, className, addTicket, deleteTickets }) => {
-  const [expandedRow, setExpandedRow] = useState(null);
+const ExpandableTable = ({
+  rows,
+  className,
+  addTicket,
+  deleteTickets,
+  editTickets,
+}: {
+  rows: any;
+  className: string;
+  addTicket: (
+    id: number,
+    ticketDetails: string,
+    ticketType: string,
+    faceValue: string,
+    price: string,
+    available: string,
+    sold: string,
+    toggleOn: boolean,
+  ) => void;
+  deleteTickets: (expandedRow: number, selectedRows: number) => void;
+  editTickets: (
+    rowId: number,
+    ticketId: number,
+    ticketDetails: string,
+    ticketType: string,
+    faceValue: string,
+    price: string,
+    available: string,
+    sold: string,
+    toggleOn: boolean,
+  ) => void;
+}) => {
+  const [expandedRow, setExpandedRow] = useState<number | null>(null);
   const { control } = useForm();
   const [toggleOn, setToggleOn] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [editIndex, setEditIndex] = useState<number | null>(null);
+  const [selectedRows, setSelectedRows] = useState<number[]>([]);
 
-  const handleRowClick = (index: React.SetStateAction<null>) => {
+  const handleCheckboxChange = (index: number) => {
+    if (selectedRows.includes(index)) {
+      setSelectedRows(selectedRows.filter((i) => i !== index));
+    } else {
+      setSelectedRows([...selectedRows, index]);
+    }
+    console.log(selectedRows);
+  };
+
+  const handleRowClick = (index: number) => {
     setExpandedRow(expandedRow === index ? null : index);
   };
 
@@ -22,7 +68,30 @@ const ExpandableTable = ({ rows, className, addTicket, deleteTickets }) => {
   };
 
   const handleOpenModal = () => {
+    setEditIndex(null);
     setOpenModal(!openModal);
+  };
+
+  const handleDeleteClick = () => {
+    selectedRows.map((row: number) => deleteTickets(expandedRow!, row));
+    setSelectedRows([]);
+  };
+
+  const handleSelectAll = () => {
+    if (selectedRows.length === rows[expandedRow!].details.length) {
+      setSelectedRows([]);
+    } else {
+      // IDs of all the rows
+      const allRows = rows[expandedRow!].details.map(
+        (row: { id: any }) => row.id,
+      );
+      setSelectedRows(allRows);
+    }
+  };
+
+  const handleOpenEditModal = (index: number) => {
+    setEditIndex(index);
+    setOpenModal(true);
   };
 
   const closeModal = () => {
@@ -72,52 +141,56 @@ const ExpandableTable = ({ rows, className, addTicket, deleteTickets }) => {
     },
   ];
 
-  const detailColumnData = [
-    { render: (data: any) => <div>{data}</div> },
-    { render: (data: any) => <div>{data}</div> },
-    { render: (data: any) => <div>{data}</div> },
-    { render: (data: any) => <div>{data}</div> },
-    { render: (data: any) => <div>{data}</div> },
-    { render: (data: any) => <div>{data}</div> },
-    {
-      render: (data: any) => (
-        <div>
-          <Switch
-            checked={toggleOn}
-            control={control}
-            name="switch"
-            handleSwitchChange={toggleMode}
-          />
-        </div>
-      ),
-    },
-    {
-      render: (data: any) => (
-        <div>
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7.70297 12.7109L13.4974 6.91652C12.5225 6.5095 11.6371 5.91481 10.8916 5.16629C10.1427 4.42062 9.54778 3.53497 9.1406 2.55976L3.34621 8.35415C2.89416 8.8062 2.66774 9.03261 2.47345 9.28175C2.24398 9.57576 2.04722 9.89389 1.88664 10.2305C1.75111 10.5157 1.65004 10.8197 1.44791 11.426L0.380855 14.6249C0.331743 14.7713 0.324457 14.9286 0.359814 15.079C0.395172 15.2293 0.471772 15.3669 0.581004 15.4761C0.690236 15.5853 0.82777 15.6619 0.978146 15.6973C1.12852 15.7327 1.28578 15.7254 1.43224 15.6763L4.63107 14.6092C5.23824 14.4071 5.54143 14.306 5.82661 14.1705C6.16349 14.0099 6.48157 13.8132 6.77537 13.5837C7.0245 13.3894 7.25092 13.163 7.70297 12.7109ZM15.105 5.30888C15.6827 4.73114 16.0073 3.94755 16.0073 3.1305C16.0073 2.31345 15.6827 1.52986 15.105 0.952119C14.5273 0.374377 13.7437 0.0498047 12.9266 0.0498047C12.1096 0.0498047 11.326 0.374377 10.7482 0.952119L10.0533 1.64704L10.0831 1.734C10.4255 2.71388 10.9859 3.60323 11.7221 4.33505C12.4758 5.0932 13.3963 5.66465 14.4101 6.0038L15.105 5.30888Z"
-              fill="#96A5B8"
-            />
-          </svg>
-        </div>
-      ),
-    },
-  ];
+  // const detailColumnData = [
+  //   { render: (data: any) => <div>{data}</div> },
+  //   { render: (data: any) => <div>{data}</div> },
+  //   { render: (data: any) => <div>{data}</div> },
+  //   { render: (data: any) => <div>{data}</div> },
+  //   { render: (data: any) => <div>{data}</div> },
+  //   { render: (data: any) => <div>{data}</div> },
+  //   {
+  //     render: (data: any) => (
+  //       <div>
+
+  //       </div>
+  //     ),
+  //   },
+  //   {
+  //     render: (data: any) => (
+  //       <div>
+  //         <svg
+  //           width="16"
+  //           height="16"
+  //           viewBox="0 0 16 16"
+  //           fill="none"
+  //           xmlns="http://www.w3.org/2000/svg"
+  //         >
+  //           <path
+  //             d="M7.70297 12.7109L13.4974 6.91652C12.5225 6.5095 11.6371 5.91481 10.8916 5.16629C10.1427 4.42062 9.54778 3.53497 9.1406 2.55976L3.34621 8.35415C2.89416 8.8062 2.66774 9.03261 2.47345 9.28175C2.24398 9.57576 2.04722 9.89389 1.88664 10.2305C1.75111 10.5157 1.65004 10.8197 1.44791 11.426L0.380855 14.6249C0.331743 14.7713 0.324457 14.9286 0.359814 15.079C0.395172 15.2293 0.471772 15.3669 0.581004 15.4761C0.690236 15.5853 0.82777 15.6619 0.978146 15.6973C1.12852 15.7327 1.28578 15.7254 1.43224 15.6763L4.63107 14.6092C5.23824 14.4071 5.54143 14.306 5.82661 14.1705C6.16349 14.0099 6.48157 13.8132 6.77537 13.5837C7.0245 13.3894 7.25092 13.163 7.70297 12.7109ZM15.105 5.30888C15.6827 4.73114 16.0073 3.94755 16.0073 3.1305C16.0073 2.31345 15.6827 1.52986 15.105 0.952119C14.5273 0.374377 13.7437 0.0498047 12.9266 0.0498047C12.1096 0.0498047 11.326 0.374377 10.7482 0.952119L10.0533 1.64704L10.0831 1.734C10.4255 2.71388 10.9859 3.60323 11.7221 4.33505C12.4758 5.0932 13.3963 5.66465 14.4101 6.0038L15.105 5.30888Z"
+  //             fill="#96A5B8"
+  //           />
+  //         </svg>
+  //       </div>
+  //     ),
+  //   },
+  // ];
 
   return (
     <>
-      {openModal && <AddTicket closeModal={closeModal} addTicket={addTicket} id={expandedRow} />}
+      {openModal && (
+        <AddTicket
+          ticketId={editIndex!}
+          ticket={rows[expandedRow!].details[editIndex!]}
+          closeModal={closeModal}
+          addTicket={addTicket}
+          editTicket={editTickets}
+          id={expandedRow!}
+        />
+      )}
       <div className={`${className && className} ${style.tableContainer}`}>
         {rows?.map(
           (row: { id: any; columns: any; details: any }, index: any) => (
-            <div key={row?.id}>
+            <div key={index}>
               <div
                 className={style.tableRow}
                 onClick={() => handleRowClick(index)}
@@ -129,7 +202,7 @@ const ExpandableTable = ({ rows, className, addTicket, deleteTickets }) => {
                     alt="arrowDown"
                   />
                 </div>
-                <div key={row?.columns[0]?.id} className={style.tableCellLeft}>
+                <div className={style.tableCellLeft}>
                   <span> {columnData[0]?.render(row?.columns[0]?.value)}</span>
                   <p>
                     {' '}
@@ -141,9 +214,9 @@ const ExpandableTable = ({ rows, className, addTicket, deleteTickets }) => {
                   {row?.columns?.map(
                     (
                       col: { id: any; value: any; name: any },
-                      colIndex: any,
+                      colIndex: number,
                     ) => (
-                      <div key={col?.id} className={style.tableCell}>
+                      <div key={colIndex} className={style.tableCell}>
                         <span> {columnData[colIndex]?.render(col.value)}</span>
                         <p>
                           {' '}
@@ -162,7 +235,8 @@ const ExpandableTable = ({ rows, className, addTicket, deleteTickets }) => {
               >
                 <div className={style.selection}>
                   <div className={style.selectItems}>
-                    <input type="checkbox" /> <span>Select All</span>
+                    <input onChange={handleSelectAll} type="checkbox" />
+                    <span>Select All</span>
                   </div>
                   <div className={style.addDelete}>
                     <FiPlusCircle
@@ -171,7 +245,7 @@ const ExpandableTable = ({ rows, className, addTicket, deleteTickets }) => {
                     />
                     <RiDeleteBin6Line
                       className={style.bin}
-                      onClick={deleteTickets}
+                      onClick={handleDeleteClick}
                     />
                   </div>
                 </div>
@@ -180,6 +254,7 @@ const ExpandableTable = ({ rows, className, addTicket, deleteTickets }) => {
                   <table className={style.detailsTable}>
                     <thead>
                       <tr>
+                        <th />
                         <th>TICKET DETAILS</th>
                         <th>TICKET TYPE</th>
                         <th>FACE VALUE</th>
@@ -187,25 +262,67 @@ const ExpandableTable = ({ rows, className, addTicket, deleteTickets }) => {
                         <th>AVAILABLE</th>
                         <th>SOLD</th>
                         <th>PUBLISH</th>
-                        <th></th>
+                        <th />
                       </tr>
                     </thead>
                     <tbody>
                       {row?.details?.map(
-                        (detailRow: { id: any; columns: any }) => (
-                          <tr key={detailRow?.id}>
+                        (
+                          detailRow: { id: any; columns: any },
+                          index: number,
+                        ) => (
+                          <tr key={index}>
+                            <td>
+                              <input
+                                checked={selectedRows.includes(detailRow.id)}
+                                onChange={() =>
+                                  handleCheckboxChange(detailRow.id)
+                                }
+                                type="checkbox"
+                              />
+                            </td>
                             {detailRow.columns.map(
                               (
                                 detail: { id: any; value: any },
                                 detailColIndex: any,
-                              ) => (
-                                <td key={detail?.id}>
-                                  {detailColumnData[detailColIndex]?.render(
-                                    detail.value,
-                                  )}
-                                </td>
-                              ),
+                              ) =>
+                                detail.value !== 'true' &&
+                                detail.value !== 'false' && (
+                                  <td key={detail?.id}>
+                                    <div>{detail.value}</div>
+                                  </td>
+                                ),
                             )}
+                            <td>
+                              <div>
+                                <Switch
+                                  control={control}
+                                  name="toggle"
+                                  checked={
+                                    detailRow.columns[6]?.value === 'true'
+                                  }
+                                  onChange={toggleMode}
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div>
+                                <svg
+                                  onClick={() => handleOpenEditModal(index)}
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 16 16"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  style={{ marginLeft: '50px' }}
+                                >
+                                  <path
+                                    d="M7.70297 12.7109L13.4974 6.91652C12.5225 6.5095 11.6371 5.91481 10.8916 5.16629C10.1427 4.42062 9.54778 3.53497 9.1406 2.55976L3.34621 8.35415C2.89416 8.8062 2.66774 9.03261 2.47345 9.28175C2.24398 9.57576 2.04722 9.89389 1.88664 10.2305C1.75111 10.5157 1.65004 10.8197 1.44791 11.426L0.380855 14.6249C0.331743 14.7713 0.324457 14.9286 0.359814 15.079C0.395172 15.2293 0.471772 15.3669 0.581004 15.4761C0.690236 15.5853 0.82777 15.6619 0.978146 15.6973C1.12852 15.7327 1.28578 15.7254 1.43224 15.6763L4.63107 14.6092C5.23824 14.4071 5.54143 14.306 5.82661 14.1705C6.16349 14.0099 6.48157 13.8132 6.77537 13.5837C7.0245 13.3894 7.25092 13.163 7.70297 12.7109ZM15.105 5.30888C15.6827 4.73114 16.0073 3.94755 16.0073 3.1305C16.0073 2.31345 15.6827 1.52986 15.105 0.952119C14.5273 0.374377 13.7437 0.0498047 12.9266 0.0498047C12.1096 0.0498047 11.326 0.374377 10.7482 0.952119L10.0533 1.64704L10.0831 1.734C10.4255 2.71388 10.9859 3.60323 11.7221 4.33505C12.4758 5.0932 13.3963 5.66465 14.4101 6.0038L15.105 5.30888Z"
+                                    fill="#96A5B8"
+                                  />
+                                </svg>
+                              </div>
+                            </td>
                           </tr>
                         ),
                       )}

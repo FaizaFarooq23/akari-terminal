@@ -7,25 +7,65 @@ import Switch from '../../components/switch';
 import style from './addTicketModule.module.scss';
 
 export default function AddTicket({
+  ticketId = 0,
+  ticket = null,
   id,
   closeModal,
   addTicket,
+  editTicket,
 }: {
+  ticketId: number;
+  ticket: any;
   id: number;
   closeModal: () => void;
-  addTicket: () => void;
+  addTicket: (
+    id: number,
+    ticketDetails: string,
+    ticketType: string,
+    faceValue: string,
+    price: string,
+    available: string,
+    sold: string,
+    toggleOn: boolean,
+  ) => void;
+  editTicket: (
+    rowId: number,
+    ticketId: number,
+    ticketDetails: string,
+    ticketType: string,
+    faceValue: string,
+    price: string,
+    available: string,
+    sold: string,
+    toggleOn: boolean,
+  ) => void;
 }) {
+  console.log(ticket);
   const [toggleOn, setToggleOn] = React.useState(false);
   const { control } = useForm();
-  const [ticketDetails, setTicketDetails] = useState('');
-  const [ticketType, setTicketType] = useState('');
-  const [faceValue, setFaceValue] = useState('');
-  const [price, setPrice] = useState('');
-  const [available, setAvailable] = useState('');
-  const [sold, setSold] = useState('');
+  const [ticketDetails, setTicketDetails] = useState(ticket?.columns[0].value);
+  const [ticketType, setTicketType] = useState(ticket?.columns[1].value);
+  const [faceValue, setFaceValue] = useState(ticket?.columns[2].value);
+  const [price, setPrice] = useState(ticket?.columns[3].value);
+  const [available, setAvailable] = useState(ticket?.columns[4].value);
+  const [sold, setSold] = useState(ticket?.columns[5].value);
 
   const toggleMode = () => {
     setToggleOn(!toggleOn);
+  };
+
+  const handleEditTicketClick = () => {
+    editTicket(
+      id,
+      ticketId,
+      ticketDetails,
+      ticketType,
+      faceValue,
+      price,
+      available,
+      sold,
+      toggleOn,
+    );
   };
 
   const handleAddTicketClick = () => {
@@ -50,11 +90,11 @@ export default function AddTicket({
           </div>
           <form>
             <label htmlFor="ticket-details">
-              {id}
               <span> Ticket Detail </span>{' '}
               <input
                 onChange={(e) => setTicketDetails(e.target.value)}
                 type="text"
+                defaultValue={ticket?.columns[0].value}
                 placeholder="Enter details"
               />
             </label>
@@ -64,6 +104,7 @@ export default function AddTicket({
               <input
                 onChange={(e) => setTicketType(e.target.value)}
                 type="text"
+                defaultValue={ticket?.columns[1].value}
                 placeholder="Enter type"
               />
             </label>
@@ -73,6 +114,7 @@ export default function AddTicket({
               <input
                 onChange={(e) => setFaceValue(e.target.value)}
                 type="text"
+                defaultValue={ticket?.columns[2].value}
                 placeholder="Enter value"
               />
             </label>
@@ -81,6 +123,7 @@ export default function AddTicket({
               <span> Price </span>{' '}
               <input
                 onChange={(e) => setPrice(e.target.value)}
+                defaultValue={ticket?.columns[3].value}
                 type="text"
                 placeholder="Enter price"
               />
@@ -90,6 +133,7 @@ export default function AddTicket({
               <span> Available</span>{' '}
               <input
                 onChange={(e) => setAvailable(e.target.value)}
+                defaultValue={ticket?.columns[4].value}
                 type="text"
                 placeholder="Enter available"
               />
@@ -99,6 +143,7 @@ export default function AddTicket({
               Sold
               <input
                 onChange={(e) => setSold(e.target.value)}
+                defaultValue={ticket?.columns[5].value}
                 type="text"
                 placeholder="Enter sold"
               />
@@ -115,11 +160,13 @@ export default function AddTicket({
             </div>
           </form>
           <button
-            onClick={handleAddTicketClick}
+            onClick={
+              ticket !== null ? handleEditTicketClick : handleAddTicketClick
+            }
             type="button"
             className={style.button}
           >
-            Add Ticket
+            {ticket !== null ? 'Update Ticket' : 'Add Ticket'}
           </button>
         </div>
       </div>

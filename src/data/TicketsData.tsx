@@ -19,12 +19,21 @@ export const rows = [
           { id: 14, value: 'Detail 1.4' },
           { id: 15, value: 'Detail 1.5' },
           { id: 16, value: 'Detail 1.6' },
-          { id: 17, value: 'Detail 1.7' },
-          { id: 18, value: 'Detail 1.8' },
         ],
       },
       {
         id: 102,
+        columns: [
+          { id: 21, value: 'Detail 1.2' },
+          { id: 22, value: 'Detail 1.10' },
+          { id: 23, value: 'Detail 1.11' },
+          { id: 24, value: 'Detail 1.12' },
+          { id: 25, value: 'Detail 1.13' },
+          { id: 26, value: 'Detail 1.14' },
+        ],
+      },
+      {
+        id: 103,
         columns: [
           { id: 21, value: 'Detail 1.9' },
           { id: 22, value: 'Detail 1.10' },
@@ -32,12 +41,21 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
-        id: 102,
+        id: 104,
+        columns: [
+          { id: 21, value: 'Detail 1.8' },
+          { id: 22, value: 'Detail 1.10' },
+          { id: 23, value: 'Detail 1.11' },
+          { id: 24, value: 'Detail 1.12' },
+          { id: 25, value: 'Detail 1.13' },
+          { id: 26, value: 'Detail 1.14' },
+        ],
+      },
+      {
+        id: 105,
         columns: [
           { id: 21, value: 'Detail 1.9' },
           { id: 22, value: 'Detail 1.10' },
@@ -45,12 +63,10 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
-        id: 102,
+        id: 106,
         columns: [
           { id: 21, value: 'Detail 1.9' },
           { id: 22, value: 'Detail 1.10' },
@@ -58,12 +74,10 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
-        id: 102,
+        id: 107,
         columns: [
           { id: 21, value: 'Detail 1.9' },
           { id: 22, value: 'Detail 1.10' },
@@ -71,12 +85,10 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
-        id: 102,
+        id: 108,
         columns: [
           { id: 21, value: 'Detail 1.9' },
           { id: 22, value: 'Detail 1.10' },
@@ -84,12 +96,10 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
-        id: 102,
+        id: 109,
         columns: [
           { id: 21, value: 'Detail 1.9' },
           { id: 22, value: 'Detail 1.10' },
@@ -97,12 +107,10 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
-        id: 102,
+        id: 110,
         columns: [
           { id: 21, value: 'Detail 1.9' },
           { id: 22, value: 'Detail 1.10' },
@@ -110,12 +118,10 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
-        id: 102,
+        id: 111,
         columns: [
           { id: 21, value: 'Detail 1.9' },
           { id: 22, value: 'Detail 1.10' },
@@ -123,12 +129,10 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
-        id: 102,
+        id: 112,
         columns: [
           { id: 21, value: 'Detail 1.9' },
           { id: 22, value: 'Detail 1.10' },
@@ -136,34 +140,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
-        ],
-      },
-      {
-        id: 102,
-        columns: [
-          { id: 21, value: 'Detail 1.9' },
-          { id: 22, value: 'Detail 1.10' },
-          { id: 23, value: 'Detail 1.11' },
-          { id: 24, value: 'Detail 1.12' },
-          { id: 25, value: 'Detail 1.13' },
-          { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
-        ],
-      },
-      {
-        id: 102,
-        columns: [
-          { id: 21, value: 'Detail 1.9' },
-          { id: 22, value: 'Detail 1.10' },
-          { id: 23, value: 'Detail 1.11' },
-          { id: 24, value: 'Detail 1.12' },
-          { id: 25, value: 'Detail 1.13' },
-          { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
     ],
@@ -187,8 +163,6 @@ export const rows = [
           { id: 14, value: 'Detail 1.4' },
           { id: 15, value: 'Detail 1.5' },
           { id: 16, value: 'Detail 1.6' },
-          { id: 17, value: 'Detail 1.7' },
-          { id: 18, value: 'Detail 1.8' },
         ],
       },
       {
@@ -200,8 +174,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -213,8 +185,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -226,8 +196,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -239,8 +207,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -252,8 +218,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -265,8 +229,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -278,8 +240,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -291,8 +251,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -304,8 +262,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -317,8 +273,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -330,8 +284,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
     ],
@@ -355,8 +307,6 @@ export const rows = [
           { id: 14, value: 'Detail 1.4' },
           { id: 15, value: 'Detail 1.5' },
           { id: 16, value: 'Detail 1.6' },
-          { id: 17, value: 'Detail 1.7' },
-          { id: 18, value: 'Detail 1.8' },
         ],
       },
       {
@@ -368,8 +318,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -381,8 +329,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -394,8 +340,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -407,8 +351,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -420,8 +362,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -433,8 +373,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -446,8 +384,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -459,8 +395,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -472,8 +406,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -485,8 +417,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -498,8 +428,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
     ],
@@ -523,8 +451,6 @@ export const rows = [
           { id: 14, value: 'Detail 1.4' },
           { id: 15, value: 'Detail 1.5' },
           { id: 16, value: 'Detail 1.6' },
-          { id: 17, value: 'Detail 1.7' },
-          { id: 18, value: 'Detail 1.8' },
         ],
       },
       {
@@ -536,8 +462,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -549,8 +473,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -562,8 +484,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -575,8 +495,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -588,8 +506,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -601,8 +517,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -614,8 +528,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -627,8 +539,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -640,8 +550,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -653,8 +561,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -666,8 +572,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
     ],
@@ -691,8 +595,6 @@ export const rows = [
           { id: 14, value: 'Detail 1.4' },
           { id: 15, value: 'Detail 1.5' },
           { id: 16, value: 'Detail 1.6' },
-          { id: 17, value: 'Detail 1.7' },
-          { id: 18, value: 'Detail 1.8' },
         ],
       },
       {
@@ -704,8 +606,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -717,8 +617,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -730,8 +628,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -743,8 +639,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -756,8 +650,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -769,8 +661,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -782,8 +672,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -795,8 +683,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -808,8 +694,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -821,8 +705,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -834,8 +716,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
     ],
@@ -859,8 +739,6 @@ export const rows = [
           { id: 14, value: 'Detail 1.4' },
           { id: 15, value: 'Detail 1.5' },
           { id: 16, value: 'Detail 1.6' },
-          { id: 17, value: 'Detail 1.7' },
-          { id: 18, value: 'Detail 1.8' },
         ],
       },
       {
@@ -872,8 +750,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -885,8 +761,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -898,8 +772,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -911,8 +783,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -924,8 +794,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -937,8 +805,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -950,8 +816,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -963,8 +827,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -976,8 +838,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -989,8 +849,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1002,8 +860,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
     ],
@@ -1027,8 +883,6 @@ export const rows = [
           { id: 14, value: 'Detail 1.4' },
           { id: 15, value: 'Detail 1.5' },
           { id: 16, value: 'Detail 1.6' },
-          { id: 17, value: 'Detail 1.7' },
-          { id: 18, value: 'Detail 1.8' },
         ],
       },
       {
@@ -1040,8 +894,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1053,8 +905,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1066,8 +916,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1079,8 +927,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1092,8 +938,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1105,8 +949,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1118,8 +960,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1131,8 +971,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1144,8 +982,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1157,8 +993,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1170,8 +1004,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
     ],
@@ -1195,8 +1027,6 @@ export const rows = [
           { id: 14, value: 'Detail 1.4' },
           { id: 15, value: 'Detail 1.5' },
           { id: 16, value: 'Detail 1.6' },
-          { id: 17, value: 'Detail 1.7' },
-          { id: 18, value: 'Detail 1.8' },
         ],
       },
       {
@@ -1208,8 +1038,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1221,8 +1049,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1234,8 +1060,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1247,8 +1071,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1260,8 +1082,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1273,8 +1093,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1286,8 +1104,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1299,8 +1115,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1312,8 +1126,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1325,8 +1137,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
       {
@@ -1338,8 +1148,6 @@ export const rows = [
           { id: 24, value: 'Detail 1.12' },
           { id: 25, value: 'Detail 1.13' },
           { id: 26, value: 'Detail 1.14' },
-          { id: 27, value: 'Detail 1.15' },
-          { id: 28, value: 'Detail 1.16' },
         ],
       },
     ],

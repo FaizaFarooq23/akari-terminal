@@ -18,18 +18,72 @@ import { rows } from '../../data/TicketsData';
 
 const Dashboard = () => {
   const [selectedButton, setSelectedButton] = useState('allTime');
-
+  const [tempRows, setTempRows] = useState(rows);
   const handleButtonClick = (button: string) => {
     setSelectedButton(button);
   };
 
-  const addTickets = () => {
-    // 1.Pass everything in this function
-    // 2. Append the new ticket to the existing tickets by
+  const editTickets = (
+    rowId: number,
+    ticketId: number,
+    ticketDetails: string,
+    ticketType: string,
+    faceValue: string,
+    price: string,
+    available: string,
+    sold: string,
+    toggleOn: boolean,
+  ) => {
+    const ticket = {
+      id: tempRows[rowId].details.length + 1,
+      columns: [
+        { id: 1, value: ticketDetails },
+        { id: 2, value: ticketType },
+        { id: 3, value: faceValue },
+        { id: 4, value: price },
+        { id: 5, value: available },
+        { id: 6, value: sold },
+        { id: 7, value: `${toggleOn}` },
+      ],
+    };
+    tempRows[rowId].details[ticketId] = ticket;
+    setTempRows([...tempRows]);
   };
 
-  const deleteTickets = () => {
-    console.log('Export Tickets');
+  const addTickets = (
+    id: number,
+    ticketDetails: string,
+    ticketType: string,
+    faceValue: string,
+    price: string,
+    available: string,
+    sold: string,
+    toggleOn: boolean,
+  ) => {
+    const ticket = {
+      id: tempRows[id].details.length + 1,
+      columns: [
+        { id: 1, value: ticketDetails },
+        { id: 2, value: ticketType },
+        { id: 3, value: faceValue },
+        { id: 4, value: price },
+        { id: 5, value: available },
+        { id: 6, value: sold },
+        { id: 7, value: `${toggleOn}` },
+      ],
+    };
+    tempRows[id].details.push(ticket);
+    setTempRows([...tempRows]);
+  };
+
+  const deleteTickets = (expandedRows: number, selectedRow: number) => {
+    console.log(expandedRows, selectedRow);
+    // Remove the selected row from the expanded rows based on id
+    const newRows = tempRows[expandedRows].details.filter(
+      (row) => row.id !== selectedRow,
+    );
+    tempRows[expandedRows].details = newRows;
+    setTempRows([...tempRows]);
   };
 
   const summaryCard = [
@@ -104,10 +158,11 @@ const Dashboard = () => {
             </div>
           </div>
           <ExpandableTable
-            rows={rows}
+            rows={tempRows}
             className={undefined}
             addTicket={addTickets}
             deleteTickets={deleteTickets}
+            editTickets={editTickets}
           />
         </ContentCard>
       </div>
