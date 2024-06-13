@@ -7,7 +7,7 @@ import style from './table.module.scss';
 import Switch from '../switch';
 import AddTicket from '../../pages/modal/addTicket';
 
-const ExpandableTable = ({ rows, className, addTickets, deleteTickets }) => {
+const ExpandableTable = ({ rows, className, addTicket, deleteTickets }) => {
   const [expandedRow, setExpandedRow] = useState(null);
   const { control } = useForm();
   const [toggleOn, setToggleOn] = useState(false);
@@ -113,7 +113,7 @@ const ExpandableTable = ({ rows, className, addTickets, deleteTickets }) => {
 
   return (
     <>
-      {openModal && <AddTicket closeModal={closeModal} />}
+      {openModal && <AddTicket closeModal={closeModal} addTicket={addTicket} id={expandedRow} />}
       <div className={`${className && className} ${style.tableContainer}`}>
         {rows?.map(
           (row: { id: any; columns: any; details: any }, index: any) => (

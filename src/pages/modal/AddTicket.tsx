@@ -1,23 +1,44 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RxCross2 } from 'react-icons/rx';
 import Switch from '../../components/switch';
 import style from './addTicketModule.module.scss';
 
-export default function AddTicket({ closeModal }: { closeModal: () => void }) {
+export default function AddTicket({
+  id,
+  closeModal,
+  addTicket,
+}: {
+  id: number;
+  closeModal: () => void;
+  addTicket: () => void;
+}) {
   const [toggleOn, setToggleOn] = React.useState(false);
   const { control } = useForm();
+  const [ticketDetails, setTicketDetails] = useState('');
+  const [ticketType, setTicketType] = useState('');
+  const [faceValue, setFaceValue] = useState('');
+  const [price, setPrice] = useState('');
+  const [available, setAvailable] = useState('');
+  const [sold, setSold] = useState('');
 
   const toggleMode = () => {
     setToggleOn(!toggleOn);
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'Escape') {
-      closeModal();
-    }
+  const handleAddTicketClick = () => {
+    addTicket(
+      id,
+      ticketDetails,
+      ticketType,
+      faceValue,
+      price,
+      available,
+      sold,
+      toggleOn,
+    );
   };
 
   return (
@@ -29,31 +50,62 @@ export default function AddTicket({ closeModal }: { closeModal: () => void }) {
           </div>
           <form>
             <label htmlFor="ticket-details">
-              Ticket Detail <input type="text" placeholder="Enter details" />
+              {id}
+              <span> Ticket Detail </span>{' '}
+              <input
+                onChange={(e) => setTicketDetails(e.target.value)}
+                type="text"
+                placeholder="Enter details"
+              />
             </label>
 
             <label htmlFor="ticket-type">
-              Ticket Type <input type="text" placeholder="Enter type" />
+              <span> Ticket Type</span>{' '}
+              <input
+                onChange={(e) => setTicketType(e.target.value)}
+                type="text"
+                placeholder="Enter type"
+              />
             </label>
 
             <label htmlFor="face-value">
-              Face Value <input type="text" placeholder="Enter value" />
+              <span> Face Value </span>{' '}
+              <input
+                onChange={(e) => setFaceValue(e.target.value)}
+                type="text"
+                placeholder="Enter value"
+              />
             </label>
 
             <label htmlFor="price">
-              Price <input type="text" placeholder="Enter price" />
+              <span> Price </span>{' '}
+              <input
+                onChange={(e) => setPrice(e.target.value)}
+                type="text"
+                placeholder="Enter price"
+              />
             </label>
 
             <label htmlFor="available">
-              Available <input type="text" placeholder="Enter available" />
+              <span> Available</span>{' '}
+              <input
+                onChange={(e) => setAvailable(e.target.value)}
+                type="text"
+                placeholder="Enter available"
+              />
             </label>
 
             <label htmlFor="sold">
-              Sold <input type="text" placeholder="Enter sold" />
+              Sold
+              <input
+                onChange={(e) => setSold(e.target.value)}
+                type="text"
+                placeholder="Enter sold"
+              />
             </label>
 
             <div className={style.switchDiv}>
-              <span className={style.label}>Publish</span>
+              <span>Publish</span>
               <Switch
                 checked={toggleOn}
                 control={control}
@@ -62,7 +114,11 @@ export default function AddTicket({ closeModal }: { closeModal: () => void }) {
               />
             </div>
           </form>
-          <button type="button" className={style.button}>
+          <button
+            onClick={handleAddTicketClick}
+            type="button"
+            className={style.button}
+          >
             Add Ticket
           </button>
         </div>

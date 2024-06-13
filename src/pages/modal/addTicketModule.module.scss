@@ -46,6 +46,8 @@
     font-family: Poppins;
     @include fontB2;
     color: #444a6d;
+    display: flex;
+    flex-direction: column;
   }
 
   .modalContent form input {
@@ -68,5 +70,6 @@
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    color: #444a6d;
   }
 }
