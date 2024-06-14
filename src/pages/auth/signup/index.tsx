@@ -29,7 +29,7 @@ const SignUp = () => {
   };
 
   const handleLoginClick = () => {
-    navigate('/login');
+    navigate('/');
   };
 
   return (

@@ -12,12 +12,12 @@ function AppRouter() {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/auto-listing" element={<AutoListing />} />
         <Route path="/account-manager" element={<AccountManager />} />
         <Route path="/csv" element={<CsvPage />} />
         <Route path="/settings" element={<Settings />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/sign-up" element={<SignUp />} />
       </Routes>

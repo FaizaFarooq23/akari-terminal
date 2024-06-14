@@ -99,13 +99,17 @@
     "apexcharts": "^3.49.1",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.8",
+    "electron-store": "^9.0.0",
     "electron-updater": "^6.1.4",
+    "fs": "^0.0.1-security",
+    "node-fs": "^0.1.7",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.5",
     "react-icons": "^5.2.1",
-    "react-router-dom": "^6.16.0"
+    "react-router-dom": "^6.16.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@electron/notarize": "^2.1.0",

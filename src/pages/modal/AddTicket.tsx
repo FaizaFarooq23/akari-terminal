@@ -41,14 +41,14 @@ export default function AddTicket({
   ) => void;
 }) {
   console.log(ticket);
-  const [toggleOn, setToggleOn] = React.useState(false);
+  const [toggleOn, setToggleOn] = React.useState(ticket?.published === 'true');
   const { control } = useForm();
-  const [ticketDetails, setTicketDetails] = useState(ticket?.columns[0].value);
-  const [ticketType, setTicketType] = useState(ticket?.columns[1].value);
-  const [faceValue, setFaceValue] = useState(ticket?.columns[2].value);
-  const [price, setPrice] = useState(ticket?.columns[3].value);
-  const [available, setAvailable] = useState(ticket?.columns[4].value);
-  const [sold, setSold] = useState(ticket?.columns[5].value);
+  const [ticketDetails, setTicketDetails] = useState(ticket?.ticketDetails);
+  const [ticketType, setTicketType] = useState(ticket?.ticketType);
+  const [faceValue, setFaceValue] = useState(ticket?.faceValue);
+  const [price, setPrice] = useState(ticket?.price);
+  const [available, setAvailable] = useState(ticket?.available);
+  const [sold, setSold] = useState(ticket?.sold);
 
   const toggleMode = () => {
     setToggleOn(!toggleOn);
@@ -94,7 +94,7 @@ export default function AddTicket({
               <input
                 onChange={(e) => setTicketDetails(e.target.value)}
                 type="text"
-                defaultValue={ticket?.columns[0].value}
+                defaultValue={ticket?.ticketDetails}
                 placeholder="Enter details"
               />
             </label>
@@ -104,7 +104,7 @@ export default function AddTicket({
               <input
                 onChange={(e) => setTicketType(e.target.value)}
                 type="text"
-                defaultValue={ticket?.columns[1].value}
+                defaultValue={ticket?.ticketType}
                 placeholder="Enter type"
               />
             </label>
@@ -114,7 +114,7 @@ export default function AddTicket({
               <input
                 onChange={(e) => setFaceValue(e.target.value)}
                 type="text"
-                defaultValue={ticket?.columns[2].value}
+                defaultValue={ticket?.faceValue}
                 placeholder="Enter value"
               />
             </label>
@@ -123,7 +123,7 @@ export default function AddTicket({
               <span> Price </span>{' '}
               <input
                 onChange={(e) => setPrice(e.target.value)}
-                defaultValue={ticket?.columns[3].value}
+                defaultValue={ticket?.price}
                 type="text"
                 placeholder="Enter price"
               />
@@ -133,7 +133,7 @@ export default function AddTicket({
               <span> Available</span>{' '}
               <input
                 onChange={(e) => setAvailable(e.target.value)}
-                defaultValue={ticket?.columns[4].value}
+                defaultValue={ticket?.available}
                 type="text"
                 placeholder="Enter available"
               />
@@ -143,7 +143,7 @@ export default function AddTicket({
               Sold
               <input
                 onChange={(e) => setSold(e.target.value)}
-                defaultValue={ticket?.columns[5].value}
+                defaultValue={ticket?.sold}
                 type="text"
                 placeholder="Enter sold"
               />
@@ -152,7 +152,7 @@ export default function AddTicket({
             <div className={style.switchDiv}>
               <span>Publish</span>
               <Switch
-                checked={toggleOn}
+                checked={ticket?.published === 'true'}
                 control={control}
                 name="switch"
                 handleSwitchChange={toggleMode}

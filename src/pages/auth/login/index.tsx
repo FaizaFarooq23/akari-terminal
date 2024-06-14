@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import logo from '../../../../assets/icons/app-icon/sidebar-icons/akari-logo.svg';
 
 import TextField from '../../../components/text-field';
@@ -12,6 +12,8 @@ import style from '../auth.module.scss';
 
 const Login = () => {
   const navigate = useNavigate();
+  const [licenseKey, setLicenseKey] = useState('');
+  const [userData, setUserData] = useState({} as any);
   const [toaster, setToaster] = useState({
     visible: true,
     message: 'Something went wrong, try again',
@@ -22,9 +24,54 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-    navigate('/');
+  useEffect(() => {
+  window.electron.ipcRenderer.sendMessage('get-user-data');
+
+  window.electron.ipcRenderer.once('get-user-data', (arg) => {
+    const data = JSON.parse(arg);
+    console.log('data', data);
+    setUserData(data);
+  });
+  }, []);
+
+  const onSubmit = async (data: any) => {
+    if (!licenseKey) {
+      setToaster({
+        visible: true,
+        message: 'Please enter a license key',
+      });
+      return;
+    }
+    let machineId = '';
+    console.log(userData);
+    if (userData.machineId) {
+      machineId = userData.machineId;
+      console.log(machineId);
+    } else {
+      console.log('no user data found');
+      machineId = uuidv4();
+      window.electron.ipcRenderer.sendMessage('save-user-data', { machineId });
+    }
+
+    const url = `https://akaricorporation.com/loginAkariTerminal?licenseKey=${licenseKey}&machineId=${machineId}`;
+    console.log(url);
+    const res = await fetch(url, {
+      method: 'GET',
+    });
+    const response = await res.json();
+    console.log(response);
+    if (response.user) {
+      navigate('/dashboard');
+    } else {
+      setToaster({
+        visible: true,
+        message: response.message,
+      });
+    }
+  };
+
+  const licenseKeyChange = (e: any) => {
+    setLicenseKey(e.target.value);
   };
 
   const handleForgotClick = () => {
@@ -56,7 +103,8 @@ const Login = () => {
             type="text"
             errorMessage={errors.email?.message}
             name="licenseKey"
-            register={register('email', { required: 'Email is required' })}
+            onChange={licenseKeyChange}
+            // register={register('email', { required: 'Email is required' })}
           />
           {/* <TextField
             label="Password"

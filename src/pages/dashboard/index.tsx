@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Layout from '../../components/layout';
 import ContentCard from '../../components/content-card';
@@ -14,14 +14,24 @@ import blueBag from '../../../assets/icons/app-icon/blue-bag.svg';
 
 import style from './dashboard.module.scss';
 import ApexChart from '../../components/apex-chart';
-import { rows } from '../../data/TicketsData';
+import { set } from 'react-hook-form';
 
 const Dashboard = () => {
   const [selectedButton, setSelectedButton] = useState('allTime');
-  const [tempRows, setTempRows] = useState(rows);
+  const [tempRows, setTempRows] = useState();
+  const [openModal, setOpenModal] = useState(false);
   const handleButtonClick = (button: string) => {
     setSelectedButton(button);
   };
+
+  useEffect(() => {
+    window.electron.ipcRenderer.once('get-tickets-data', (arg) => {
+      const data = JSON.parse(arg);
+      setTempRows(data);
+    });
+
+    window.electron.ipcRenderer.sendMessage('get-tickets-data', ['ping']);
+  }, []);
 
   const editTickets = (
     rowId: number,
@@ -46,6 +56,8 @@ const Dashboard = () => {
     };
     tempRows[rowId].details[ticketId] = ticket;
     setTempRows([...tempRows]);
+    window.electron.ipcRenderer.sendMessage('save-tickets-data', tempRows);
+    setOpenModal(false);
   };
 
   const addTickets = (
@@ -70,6 +82,8 @@ const Dashboard = () => {
     };
     tempRows[id].details.push(ticket);
     setTempRows([...tempRows]);
+    window.electron.ipcRenderer.sendMessage('save-tickets-data', tempRows);
+    setOpenModal(false);
   };
 
   const deleteTickets = (expandedRows: number, selectedRow: number) => {
@@ -80,6 +94,7 @@ const Dashboard = () => {
     );
     tempRows[expandedRows].details = newRows;
     setTempRows([...tempRows]);
+    window.electron.ipcRenderer.sendMessage('save-tickets-data', tempRows);
   };
 
   const summaryCard = [
@@ -125,6 +140,7 @@ const Dashboard = () => {
             <div className={style.cardsDiv}>
               {summaryCard?.map((e) => (
                 <SummaryCard
+                  key={e.heading}
                   icon={e?.icon}
                   heading={e?.heading}
                   subHeading={e?.subHeading}
@@ -159,6 +175,8 @@ const Dashboard = () => {
             addTicket={addTickets}
             deleteTickets={deleteTickets}
             editTickets={editTickets}
+            openModal={openModal}
+            setOpenModal={setOpenModal}
           />
         </ContentCard>
       </div>

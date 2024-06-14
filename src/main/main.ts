@@ -8,10 +8,11 @@
  * When running `npm run build` or `npm run build:main`, this file is compiled to
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
-import path from 'path';
+import path, { dirname } from 'path';
 import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
+import fs from 'node-fs';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 
@@ -29,6 +30,51 @@ ipcMain.on('ipc-example', async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
   console.log(msgTemplate(arg));
   event.reply('ipc-example', msgTemplate('pong'));
+});
+
+ipcMain.on('get-user-data', async (event, arg) => {
+  console.log(arg);
+  console.log(dirname(__dirname));
+  let data = '';
+  try {
+    data = fs.readFileSync(
+      path.join(dirname(__dirname), 'data', 'user.json'),
+      'utf8',
+    );
+  } catch (error) {
+    console.log(error);
+    data = 'No data found';
+  }
+  console.log('UserData', data);
+  event.reply('get-user-data', data);
+});
+
+ipcMain.on('save-user-data', async (event, arg) => {
+  console.log(arg);
+  fs.writeFileSync(
+    path.join(dirname(__dirname), 'data', 'user.json'),
+    JSON.stringify(arg),
+    'utf8',
+  );
+});
+
+ipcMain.on('get-tickets-data', async (event, arg) => {
+  console.log(arg);
+  console.log(dirname(__dirname));
+  const data = fs.readFileSync(
+    path.join(dirname(__dirname), 'data', 'tickets.json'),
+    'utf8',
+  );
+  event.reply('get-tickets-data', data);
+});
+
+ipcMain.on('save-tickets-data', async (event, arg) => {
+  console.log(arg);
+  fs.writeFileSync(
+    path.join(dirname(__dirname), 'data', 'tickets.json'),
+    JSON.stringify(arg),
+    'utf8',
+  );
 });
 
 if (process.env.NODE_ENV === 'production') {

@@ -31,7 +31,7 @@ const ForgotPassword = () => {
   };
 
   const handleHomeClick = () => {
-    navigate('/login');
+    navigate('/');
   };
   return (
     <div className={style.mainWrapper}>

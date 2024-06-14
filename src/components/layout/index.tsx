@@ -37,7 +37,7 @@ const Layout = ({ pageTitle, children }) => {
     { path: '/account-manager', label: 'Account Manager', icon: acc },
     { path: '/csv', label: 'CSV Import/Export', icon: csv },
     { path: '/settings', label: 'Settings', icon: setting },
-    { path: '/login', label: 'Sign Out', icon: signout },
+    { path: '/', label: 'Sign Out', icon: signout },
   ];
 
   const handleOpenMenu = () => {

@@ -28,6 +28,8 @@ const ExpandableTable = ({
   addTicket,
   deleteTickets,
   editTickets,
+  openModal,
+  setOpenModal,
 }: {
   rows: any;
   className: string;
@@ -53,13 +55,15 @@ const ExpandableTable = ({
     sold: string,
     toggleOn: boolean,
   ) => void;
+  openModal: boolean;
+  setOpenModal: (value: boolean) => void;
 }) => {
   const [expandedRow, setExpandedRow] = useState<number | null>(null);
   const { control } = useForm();
   const [toggleOn, setToggleOn] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
+  const [deleteEnabled, setDeleteEnabled] = useState(false);
 
   const handleCheckboxChange = (index: number) => {
     if (selectedRows.includes(index)) {
@@ -84,8 +88,13 @@ const ExpandableTable = ({
   };
 
   const handleDeleteClick = () => {
-    selectedRows.map((row: number) => deleteTickets(expandedRow!, row));
-    setSelectedRows([]);
+    if (deleteEnabled) {
+      selectedRows.map((row: number) => deleteTickets(expandedRow!, row));
+      setSelectedRows([]);
+      setDeleteEnabled(false);
+    } else {
+      setDeleteEnabled(true);
+    }
   };
 
   const handleSelectAll = () => {
@@ -233,9 +242,13 @@ const ExpandableTable = ({
                 }`}
               >
                 <div className={style.selection}>
-                  <div className={style.selectItems}>
-                    <input onChange={handleSelectAll} type="checkbox" />
-                    <span>Select All</span>
+                  <div>
+                    {deleteEnabled && (
+                      <div className={style.selectItems}>
+                        <input onChange={handleSelectAll} type="checkbox" />
+                        <span>Select All</span>
+                      </div>
+                    )}
                   </div>
                   <div className={style.addDelete}>
                     <FiPlusCircle
@@ -253,7 +266,7 @@ const ExpandableTable = ({
                   <table className={style.detailsTable}>
                     <thead>
                       <tr>
-                        <th />
+                        {deleteEnabled && <th />}
                         <th>TICKET DETAILS</th>
                         <th>TICKET TYPE</th>
                         <th>FACE VALUE</th>
@@ -268,13 +281,17 @@ const ExpandableTable = ({
                       {row?.details?.map(
                         (ticket: TicketData, index: number) => (
                           <tr key={index}>
-                            <td>
-                              <input
-                                checked={selectedRows.includes(ticket.id)}
-                                onChange={() => handleCheckboxChange(ticket.id)}
-                                type="checkbox"
-                              />
-                            </td>
+                            {deleteEnabled && (
+                              <td>
+                                <input
+                                  checked={selectedRows.includes(ticket.id)}
+                                  onChange={() =>
+                                    handleCheckboxChange(ticket.id)
+                                  }
+                                  type="checkbox"
+                                />
+                              </td>
+                            )}
                             <td>
                               <div>{ticket.ticketDetails}</div>
                             </td>

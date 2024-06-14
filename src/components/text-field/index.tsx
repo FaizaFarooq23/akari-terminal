@@ -18,6 +18,7 @@ const TextField = ({
   register,
   value,
   onSuccess,
+  onChange,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
@@ -55,6 +56,7 @@ const TextField = ({
           type={type === 'password' && !showPassword ? 'password' : 'text'}
           defaultValue={value}
           placeholder={placeholder}
+          onChange={onChange}
           style={{
             paddingLeft: showSearchIcon ? '40px' : '',
             marginTop: label ? '10px' : '',
