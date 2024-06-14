@@ -51,14 +51,14 @@ const Login = () => {
         </div>
         <form className={style.formDiv} onSubmit={handleSubmit(onSubmit)}>
           <TextField
-            label="Email"
-            placeholder="Please enter your email address"
-            type="email"
+            label="License key"
+            placeholder="Please enter your license Key"
+            type="text"
             errorMessage={errors.email?.message}
-            name="email"
+            name="licenseKey"
             register={register('email', { required: 'Email is required' })}
           />
-          <TextField
+          {/* <TextField
             label="Password"
             placeholder="Please enter your password"
             type="password"
@@ -67,7 +67,7 @@ const Login = () => {
             register={register('password', {
               required: 'Password is required',
             })}
-          />
+          /> */}
           <button type="submit">Login</button>
           <button onClick={handleSignUpClick}>Sign Up</button>
         </form>

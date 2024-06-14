@@ -62,8 +62,8 @@ const TextField = ({
             border: onSuccess
               ? '1px solid #35DC26'
               : errorMessage
-              ? '1px solid #DC2626'
-              : '1px solid #fff',
+                ? '1px solid #DC2626'
+                : '1px solid #fff',
           }}
           {...register}
         />

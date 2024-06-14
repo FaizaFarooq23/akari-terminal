@@ -36,15 +36,13 @@ const Dashboard = () => {
   ) => {
     const ticket = {
       id: tempRows[rowId].details.length + 1,
-      columns: [
-        { id: 1, value: ticketDetails },
-        { id: 2, value: ticketType },
-        { id: 3, value: faceValue },
-        { id: 4, value: price },
-        { id: 5, value: available },
-        { id: 6, value: sold },
-        { id: 7, value: `${toggleOn}` },
-      ],
+      ticketDetails,
+      ticketType,
+      price,
+      faceValue,
+      available,
+      sold,
+      published: `${toggleOn}`,
     };
     tempRows[rowId].details[ticketId] = ticket;
     setTempRows([...tempRows]);
@@ -62,15 +60,13 @@ const Dashboard = () => {
   ) => {
     const ticket = {
       id: tempRows[id].details.length + 1,
-      columns: [
-        { id: 1, value: ticketDetails },
-        { id: 2, value: ticketType },
-        { id: 3, value: faceValue },
-        { id: 4, value: price },
-        { id: 5, value: available },
-        { id: 6, value: sold },
-        { id: 7, value: `${toggleOn}` },
-      ],
+      ticketDetails,
+      ticketType,
+      price,
+      faceValue,
+      available,
+      sold,
+      published: `${toggleOn}`,
     };
     tempRows[id].details.push(ticket);
     setTempRows([...tempRows]);
