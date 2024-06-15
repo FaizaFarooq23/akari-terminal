@@ -12,6 +12,7 @@ export default function Middleware({
 
   useEffect(() => {
     const token = localStorage.getItem('user');
+    console.log('token', token);
     if (token) {
       setLoggedIn(true);
     } else {

@@ -152,7 +152,7 @@ export default function AddTicket({
             <div className={style.switchDiv}>
               <span>Publish</span>
               <Switch
-                checked={ticket?.published === 'true'}
+                checked={toggleOn}
                 control={control}
                 name="switch"
                 handleSwitchChange={toggleMode}

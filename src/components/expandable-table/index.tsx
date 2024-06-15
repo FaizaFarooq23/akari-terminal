@@ -282,7 +282,7 @@ const ExpandableTable = ({
                         (ticket: TicketData, index: number) => (
                           <tr key={index}>
                             {deleteEnabled && (
-                              <td>
+                              <td className={style.deleteCheckbox}>
                                 <input
                                   checked={selectedRows.includes(ticket.id)}
                                   onChange={() =>

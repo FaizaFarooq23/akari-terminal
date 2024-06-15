@@ -25,7 +25,6 @@ const Login = () => {
   } = useForm();
 
   useEffect(() => {
-    localStorage.removeItem('user');
     window.electron.ipcRenderer.sendMessage('get-user-data');
 
     window.electron.ipcRenderer.once('get-user-data', (arg) => {
@@ -61,8 +60,9 @@ const Login = () => {
     });
     const response = await res.json();
     console.log(response);
+    console.log(response.user);
     if (response.user) {
-      localStorage.setItem('user', JSON.stringify(response.user));
+      localStorage.setItem('user', JSON.stringify(response));
       navigate('/dashboard');
     } else {
       setToaster({
@@ -106,7 +106,7 @@ const Login = () => {
             errorMessage={errors.email?.message}
             name="licenseKey"
             onChange={licenseKeyChange}
-          // register={register('email', { required: 'Email is required' })}
+            // register={register('email', { required: 'Email is required' })}
           />
           {/* <TextField
             label="Password"

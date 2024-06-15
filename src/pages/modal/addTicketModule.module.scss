@@ -15,7 +15,7 @@
   }
 
   .modalContent {
-    width: 60%;
+    width: 50%;
     height: 60%;
     background-color: white;
     border-radius: 10px;
@@ -48,6 +48,7 @@
     color: #444a6d;
     display: flex;
     flex-direction: column;
+    gap: 4px;
   }
 
   .modalContent form input {
@@ -72,4 +73,13 @@
     gap: 10px;
     color: #444a6d;
   }
+
+  .deleteCheckbox{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 10px;
+    color: #444a6d;
+  }
+
 }

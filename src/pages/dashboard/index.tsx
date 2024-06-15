@@ -45,7 +45,7 @@ const Dashboard = () => {
     toggleOn: boolean,
   ) => {
     const ticket = {
-      id: tempRows[rowId].details.length + 1,
+      id: rowId,
       ticketDetails,
       ticketType,
       price,
@@ -71,7 +71,7 @@ const Dashboard = () => {
     toggleOn: boolean,
   ) => {
     const ticket = {
-      id: tempRows[id].details.length + 1,
+      id: tempRows[id].details[tempRows[id].details.length - 1].id + 1,
       ticketDetails,
       ticketType,
       price,
