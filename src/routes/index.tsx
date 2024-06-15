@@ -7,16 +7,52 @@ import Settings from '../pages/settings';
 import Login from '../pages/auth/login';
 import ForgotPassword from '../pages/auth/forgot-password';
 import SignUp from '../pages/auth/signup';
+import Middleware from '../components/middleware/middleware';
 
 function AppRouter() {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/auto-listing" element={<AutoListing />} />
-        <Route path="/account-manager" element={<AccountManager />} />
-        <Route path="/csv" element={<CsvPage />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route
+          path="/dashboard"
+          element={
+            <Middleware>
+              <Dashboard />
+            </Middleware>
+          }
+        />
+        <Route
+          path="/auto-listing"
+          element={
+            <Middleware>
+              <AutoListing />
+            </Middleware>
+          }
+        />
+        <Route
+          path="/account-manager"
+          element={
+            <Middleware>
+              <AccountManager />
+            </Middleware>
+          }
+        />
+        <Route
+          path="/csv"
+          element={
+            <Middleware>
+              <CsvPage />
+            </Middleware>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <Middleware>
+              <Settings />
+            </Middleware>
+          }
+        />
         <Route path="/" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/sign-up" element={<SignUp />} />

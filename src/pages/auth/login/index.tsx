@@ -25,13 +25,14 @@ const Login = () => {
   } = useForm();
 
   useEffect(() => {
-  window.electron.ipcRenderer.sendMessage('get-user-data');
+    localStorage.removeItem('user');
+    window.electron.ipcRenderer.sendMessage('get-user-data');
 
-  window.electron.ipcRenderer.once('get-user-data', (arg) => {
-    const data = JSON.parse(arg);
-    console.log('data', data);
-    setUserData(data);
-  });
+    window.electron.ipcRenderer.once('get-user-data', (arg) => {
+      const data = JSON.parse(arg);
+      console.log('data', data);
+      setUserData(data);
+    });
   }, []);
 
   const onSubmit = async (data: any) => {
@@ -61,6 +62,7 @@ const Login = () => {
     const response = await res.json();
     console.log(response);
     if (response.user) {
+      localStorage.setItem('user', JSON.stringify(response.user));
       navigate('/dashboard');
     } else {
       setToaster({
@@ -104,7 +106,7 @@ const Login = () => {
             errorMessage={errors.email?.message}
             name="licenseKey"
             onChange={licenseKeyChange}
-            // register={register('email', { required: 'Email is required' })}
+          // register={register('email', { required: 'Email is required' })}
           />
           {/* <TextField
             label="Password"
