@@ -7,7 +7,17 @@ import data from '../../data/tickets.json';
 
 const CsvPage = () => {
   const exportTickets = async () => {
-    const csv = await json2csv(data);
+    // Get the details of each ticket and convert it to csv
+
+    const results = [];
+
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < data.length; i++) {
+      results.push(...data[i].details);
+    }
+    console.log(results);
+
+    const csv = await json2csv(results);
     console.log(csv);
     const blob = new Blob([csv], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
@@ -49,8 +59,8 @@ const CsvPage = () => {
             <p>Allowed file is only .csv</p>
           </div>
           <div className={style.btnDiv}>
-            <Button text={'Import'} handleClick={importTickets} />
-            <Button text={'Export'} handleClick={exportTickets} />
+            <Button text="Import" handleClick={importTickets} />
+            <Button text="Export" handleClick={exportTickets} />
           </div>
         </ContentCard>
       </div>
