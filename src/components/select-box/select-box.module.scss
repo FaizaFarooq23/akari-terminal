@@ -7,17 +7,31 @@
   flex-direction: column;
 
   .selectBoxInput {
+    height: 40px !important;
+    border-radius: 8px !important;
+    border: 1px solid #c3d3e2 !important;
+    color: #444a6d;
+    margin-top: 5px !important;
     width: 200px;
     padding: 10px;
-    border: 1px solid #c3d3e2;
-    border-radius: 5px;
     font-family: Poppins;
     @include fontB3;
     font-weight: 600;
     line-height: 21.79px;
     text-align: left;
     color: #444a6d;
-
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-family: Poppins;
+      @include fontB3;
+      font-weight: 400;
+      line-height: 21px;
+      text-align: left;
+      color: #444a6d;
+    }
     &::placeholder {
       @include fontB3;
       color: gray;

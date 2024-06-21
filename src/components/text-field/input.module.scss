@@ -2,7 +2,6 @@
 
 .inputContainer {
   width: 100%;
-
   label {
     font-family: Poppins;
     @include fontH7;
@@ -12,14 +11,15 @@
   }
 
   .input {
-    margin-top: 8px;
-    display: flex;
+    background-color: transparent;
     width: 100%;
     height: 53px;
     padding: 16px;
-    border-radius: 12px;
-    border: 1px;
-    background-color: transparent;
+    height: 40px !important;
+      border-radius: 8px !important;
+      border: 1px solid #c3d3e2 !important;
+      color: #444a6d;
+      margin-top: 5px !important;
     //text
     font-family: Poppins;
     @include fontB3;
@@ -84,7 +84,6 @@
 }
 
 .closedEye {
-  position: absolute;
   top: 35%;
   right: 15px;
   cursor: pointer;

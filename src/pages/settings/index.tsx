@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/label-has-for */
+import React from 'react';
 import ContentCard from '../../components/content-card';
 import Layout from '../../components/layout';
 import SelectBox from '../../components/select-box';
@@ -14,9 +17,18 @@ const Settings = () => {
     { label: '60 sec', value: 'opt6' },
   ];
 
-  const handleChange = (value: string) => {
+  const [seconds, setSeconds] = React.useState(0);
+  const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSeconds(parseInt(event.target.value, 10));
+  };
+
+  const token = localStorage.getItem('user');
+  const tokenKey = token ? JSON.parse(token).metadata.key : '';
+
+  const handleChange = (value: any) => {
     console.log(value);
   };
+
   return (
     <Layout pageTitle="Settings">
       <div className={style.mainWrapper}>
@@ -26,18 +38,28 @@ const Settings = () => {
         >
           <div className={style.firstRow}>
             <TextField
-              label="key"
-              type="password"
-              placeholder="Enter your key"
+              label="Key"
+              type="text"
+              placeholder={tokenKey}
               container={style.inputClass}
+              readOnly
             />
-            <SelectBox
-              options={options}
-              placeholder="Select an option"
-              onChange={handleChange}
-              label="Delay"
-              className={style.selectBox}
-            />
+            <div className={`${style.selectBox}`}>
+              <label className={style.label}>
+                Delay
+                <div className={style.selectBoxInput}>
+                  {' '}
+                  <input
+                    type="number"
+                    value={seconds}
+                    onChange={handleNumberChange}
+                    placeholder="Enter Delay"
+                    min={0}
+                  />
+                  <span>sec</span>
+                </div>
+              </label>
+            </div>
           </div>
           <div>
             <TextField
@@ -46,6 +68,10 @@ const Settings = () => {
               placeholder="webhooklink-webhooklink-webhooklink"
               container={style.inputClass2}
             />
+          </div>
+          <div className={`${style.secondRow}`}>
+            <button type="button">Test Webhook</button>
+            <button type="submit"> Save </button>
           </div>
         </ContentCard>
       </div>

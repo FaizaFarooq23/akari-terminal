@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from 'react';
 
+import { set } from 'react-hook-form';
 import Layout from '../../components/layout';
 import ContentCard from '../../components/content-card';
 import ExpandableTable from '../../components/expandable-table';
@@ -14,7 +15,6 @@ import blueBag from '../../../assets/icons/app-icon/blue-bag.svg';
 
 import style from './dashboard.module.scss';
 import ApexChart from '../../components/apex-chart';
-import { set } from 'react-hook-form';
 
 const Dashboard = () => {
   const [selectedButton, setSelectedButton] = useState('allTime');

@@ -32,19 +32,19 @@ const CsvPage = () => {
 
   const importTickets = () => {
     // conver csv to json and make file in data folder with new data
-    const fileInput = document.createElement('input');
-    fileInput.setAttribute('type', 'file');
-    fileInput.setAttribute('accept', '.csv');
-    fileInput.click();
-    fileInput.onchange = (e) => {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.readAsText(file);
-      reader.onload = (e) => {
-        const csv = e.target.result;
-        console.log(csv);
-      };
-    };
+    // const fileInput = document.createElement('input');
+    // fileInput.setAttribute('type', 'file');
+    // fileInput.setAttribute('accept', '.csv');
+    // fileInput.click();
+    // fileInput.onchange = (e) => {
+    //   const file = e.target.files[0];
+    //   const reader = new FileReader();
+    //   reader.readAsText(file);
+    //   reader.onload = (e) => {
+    //     const csv = e.target.result;
+    //     console.log(csv);
+    //   };
+    // };
   };
 
   return (

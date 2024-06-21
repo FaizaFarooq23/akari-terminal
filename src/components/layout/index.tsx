@@ -32,7 +32,7 @@ const Layout = ({ pageTitle, children }) => {
   const [openMenu, setOpenMenu] = useState(false);
 
   const routes = [
-    { path: '/', label: 'Dashboard', icon: dash },
+    { path: '/dashboard', label: 'Dashboard', icon: dash },
     { path: '/auto-listing', label: 'Auto Listing', icon: auto },
     { path: '/account-manager', label: 'Account Manager', icon: acc },
     { path: '/csv', label: 'CSV Import/Export', icon: csv },
