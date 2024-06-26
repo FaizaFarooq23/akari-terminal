@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from 'react';
+import { json2csv } from 'json-2-csv';
 
 import { set } from 'react-hook-form';
 import Layout from '../../components/layout';
@@ -18,10 +19,76 @@ import ApexChart from '../../components/apex-chart';
 
 const Dashboard = () => {
   const [selectedButton, setSelectedButton] = useState('allTime');
-  const [tempRows, setTempRows] = useState();
+  const [tempRows, setTempRows] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [ticketsSummary, setTicketsSummary] = useState<any>();
+
+  useEffect(() => {
+    if (tempRows.length > 0) {
+      const totalTickets = tempRows.reduce((acc: any, row: any) => {
+        return acc + row.details.length;
+      }, 0);
+      const totalSales = tempRows.reduce((acc: any, row: any) => {
+        return (
+          acc +
+          row.details.reduce((acc: any, row: any) => {
+            if (row.sold === 'Yes') {
+              return acc + parseFloat(row.price);
+            }
+            return acc;
+          }, 0)
+        );
+      }, 0);
+      const totalSpent = tempRows.reduce((acc: any, row: any) => {
+        return (
+          acc +
+          row.details.reduce((acc: any, row: any) => {
+            return acc + parseFloat(row.faceValue);
+          }, 0)
+        );
+      }, 0);
+      const totalProfit = tempRows.reduce((acc: any, row: any) => {
+        return (
+          acc +
+          row.details.reduce((acc: any, row: any) => {
+            if (row.sold === 'Yes') {
+              return acc + (parseFloat(row.price) - parseFloat(row.faceValue));
+            }
+            return acc;
+          }, 0)
+        );
+      }, 0);
+      setTicketsSummary([
+        `$${totalSpent}`,
+        totalTickets,
+        `$${totalSales}`,
+        `$${totalProfit}`,
+      ]);
+    }
+  }, [tempRows]);
+
   const handleButtonClick = (button: string) => {
-    setSelectedButton(button);
+    if (button === '24hr') {
+      // Set the tempRows to the last 24 hours data
+      const filteredData = tempRows!.filter((row: any) => {
+        // Create date from this Wed 26 Jun 2024 20:00
+        const date = new Date(row.columns.date);
+        const currentDate = new Date();
+        const diff = currentDate.getTime() - date.getTime();
+        const diffInHours = diff / (1000 * 3600);
+        return diffInHours < 24;
+      });
+      setSelectedButton('24hr');
+      setTempRows(filteredData);
+    } else {
+      // Set the tempRows to all time data
+      setSelectedButton('allTime');
+      window.electron.ipcRenderer.sendMessage('get-tickets-data', ['ping']);
+      window.electron.ipcRenderer.once('get-tickets-data', (arg) => {
+        const data = JSON.parse(arg);
+        setTempRows(data);
+      });
+    }
   };
 
   useEffect(() => {
@@ -128,26 +195,52 @@ const Dashboard = () => {
     },
   ];
 
+  const exportSummary = async () => {
+    const results = [
+      {
+        'Total Spent': summaryCard[0],
+        Tickets: summaryCard[1],
+        'Total Sales': summaryCard[2],
+        'Net Profit': summaryCard[3],
+      },
+    ];
+
+    const csv = await json2csv(results);
+    console.log(csv);
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'summary.csv');
+    document.body.appendChild(a);
+    a.click();
+  };
+
   return (
     <Layout pageTitle="Dashboard">
       <div className={style.mainWrapper}>
         <div className={style.uppderSection}>
           <ContentCard heading="Hey, Faizan" className={style.summaryCard}>
-            <div className={style.btnsDiv}>
+            <div onClick={exportSummary} className={style.btnsDiv}>
               <div>Export</div>
             </div>
             <span className={style.subHeading}>Here is your summary</span>
             <div className={style.cardsDiv}>
-              {summaryCard?.map((e) => (
-                <SummaryCard
-                  key={e.heading}
-                  icon={e?.icon}
-                  heading={e?.heading}
-                  subHeading={e?.subHeading}
-                  value={e?.value}
-                  bgColor={e?.bgColor}
-                />
-              ))}
+              {ticketsSummary &&
+                summaryCard?.map((e, index) => (
+                  <SummaryCard
+                    summaryData={ticketsSummary}
+                    index={index}
+                    key={e.heading}
+                    icon={e?.icon}
+                    heading={e?.heading}
+                    subHeading={e?.subHeading}
+                    value={e?.value}
+                    bgColor={e?.bgColor}
+                  />
+                ))}
             </div>
           </ContentCard>
           <ContentCard heading="Analytics" className={style.analyticsCard}>
