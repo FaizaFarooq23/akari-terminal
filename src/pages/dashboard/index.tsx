@@ -198,10 +198,10 @@ const Dashboard = () => {
   const exportSummary = async () => {
     const results = [
       {
-        'Total Spent': summaryCard[0],
-        Tickets: summaryCard[1],
-        'Total Sales': summaryCard[2],
-        'Net Profit': summaryCard[3],
+        'Total Spent': ticketsSummary[0],
+        Tickets: ticketsSummary[1],
+        'Total Sales': ticketsSummary[2],
+        'Net Profit': ticketsSummary[3],
       },
     ];
 
