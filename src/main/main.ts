@@ -10,6 +10,7 @@
  */
 import path, { dirname } from 'path';
 import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import { WebhookClient, EmbedBuilder } from 'discord.js';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import fs from 'node-fs';
@@ -56,6 +57,21 @@ ipcMain.on('save-user-data', async (event, arg) => {
     JSON.stringify(arg),
     'utf8',
   );
+});
+
+ipcMain.on('send-webhook', async (event, arg) => {
+  const embed = new EmbedBuilder()
+    .setTitle('This is a simple embed title')
+    .setDescription('This is a short description of the embed content.')
+    .setColor(0x00ff00); // Green color in decimal format
+
+  const client = new WebhookClient(arg);
+  try {
+    const response = await client.send({ embeds: [embed] });
+    console.log('Response from webhook', response);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 ipcMain.on('get-tickets-data', async (event, arg) => {

@@ -16,7 +16,7 @@ const Settings = () => {
     { label: '50 sec', value: 'opt5' },
     { label: '60 sec', value: 'opt6' },
   ];
-
+  const [webhookURL, setWebhookURL] = React.useState('');
   const [seconds, setSeconds] = React.useState(0);
   const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSeconds(parseInt(event.target.value, 10));
@@ -27,6 +27,13 @@ const Settings = () => {
 
   const handleChange = (value: any) => {
     console.log(value);
+  };
+
+  const sendWebhook = async () => {
+    console.log('Sending webhook', webhookURL);
+    window.electron.ipcRenderer.sendMessage('send-webhook', {
+      url: webhookURL,
+    });
   };
 
   return (
@@ -65,12 +72,15 @@ const Settings = () => {
             <TextField
               label="Webhook"
               type="text"
-              placeholder="webhooklink-webhooklink-webhooklink"
+              placeholder="https://discord.com/api/webhooks/"
               container={style.inputClass2}
+              onChange={(e) => setWebhookURL(e.target.value)}
             />
           </div>
           <div className={`${style.secondRow}`}>
-            <button type="button">Test Webhook</button>
+            <button onClick={sendWebhook} type="button">
+              Test Webhook
+            </button>
             <button type="submit"> Save </button>
           </div>
         </ContentCard>

@@ -36,6 +36,9 @@
       @media (max-width: 550px) {
         min-width: 100%;
       }
+      input {
+        color: white !important;
+      }
       button {
         margin-top: 8px;
         display: flex;
