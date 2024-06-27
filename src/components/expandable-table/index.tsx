@@ -271,7 +271,6 @@ const ExpandableTable = ({
                         <th>TICKET TYPE</th>
                         <th>FACE VALUE</th>
                         <th>PRICE</th>
-                        <th>AVAILABLE</th>
                         <th>SOLD</th>
                         <th>PUBLISH</th>
                         <th />
@@ -303,9 +302,6 @@ const ExpandableTable = ({
                             </td>
                             <td>
                               <div>{ticket.price}</div>
-                            </td>
-                            <td>
-                              <div>{ticket.available}</div>
                             </td>
                             <td>
                               <div>{ticket.sold}</div>

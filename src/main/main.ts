@@ -77,6 +77,23 @@ ipcMain.on('save-tickets-data', async (event, arg) => {
   );
 });
 
+ipcMain.on('append-tickets-data', async (event, arg) => {
+  console.log(arg);
+  const data = fs.readFileSync(
+    path.join(dirname(__dirname), 'data', 'tickets.json'),
+    'utf8',
+  );
+  const tickets = JSON.parse(data);
+  for (let i = 0; i < arg.length; i++) {
+    tickets[arg[i].event_id - 1].details.push(arg[i]);
+  }
+  fs.writeFileSync(
+    path.join(dirname(__dirname), 'data', 'tickets.json'),
+    JSON.stringify(tickets),
+    'utf8',
+  );
+});
+
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
   sourceMapSupport.install();

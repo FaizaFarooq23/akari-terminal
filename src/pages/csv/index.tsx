@@ -1,4 +1,4 @@
-import { json2csv } from 'json-2-csv';
+import { json2csv, csv2json } from 'json-2-csv';
 import Button from '../../components/button';
 import ContentCard from '../../components/content-card';
 import Layout from '../../components/layout';
@@ -31,20 +31,42 @@ const CsvPage = () => {
   };
 
   const importTickets = () => {
-    // conver csv to json and make file in data folder with new data
-    // const fileInput = document.createElement('input');
-    // fileInput.setAttribute('type', 'file');
-    // fileInput.setAttribute('accept', '.csv');
-    // fileInput.click();
-    // fileInput.onchange = (e) => {
-    //   const file = e.target.files[0];
-    //   const reader = new FileReader();
-    //   reader.readAsText(file);
-    //   reader.onload = (e) => {
-    //     const csv = e.target.result;
-    //     console.log(csv);
-    //   };
-    // };
+    // Read the file
+
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.csv';
+    input.onchange = async (e) => {
+      const file = e.target!.files[0];
+      const reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = async () => {
+        const csv: string = reader.result as string;
+
+        if (
+          csv.startsWith(
+            'event_id,id,ticketDetails,ticketType,price,faceValue,available,sold,published',
+          )
+        ) {
+          try {
+            const json = await csv2json(csv);
+            console.log(json);
+            window.electron.ipcRenderer.sendMessage(
+              'append-tickets-data',
+              json,
+            );
+            alert('Tickets imported successfully');
+          } catch (error) {
+            console.log(error);
+            alert('Invalid CSV file');
+          }
+        } else {
+          alert('Invalid CSV file');
+        }
+      };
+    };
+
+    input.click();
   };
 
   return (
